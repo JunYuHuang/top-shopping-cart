@@ -54,7 +54,7 @@
   - `products`: array of `product` objects consisting of
     - `id`: unique primitive data type identifier
     - `title`: name of product
-    - `imgSrc`: URL to an image of the product
+    - `image`: URL to an image of the product
     - `price`: float of product's consumer price
   - `cart`: array of `item` objects consisting of
     - `id`: id of product
