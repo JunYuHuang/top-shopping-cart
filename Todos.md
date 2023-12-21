@@ -2,8 +2,8 @@
 
 ## Assignment Todos
 
-- [ ] Step 1
-- [ ] Step 2
+- [x] Step 1
+- [x] Step 2
 - [ ] Step 3
 - [ ] Step 4
 - [ ] Step 5
@@ -16,7 +16,7 @@
 
 ## Custom Todos
 
-- [ ] Set up Tailwindcss
+- [x] Set up Tailwindcss
 - [ ] Set up React Router for client-side routing
 - [ ] Set up React Testing Library and other testing packages
 - [ ] Create non-UI utility functions and hooks
