@@ -1,26 +1,26 @@
-/* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom/client";
+import { useState, useEffect } from "react";
 import Root from "./routes/root.jsx";
 import Shop from "./routes/shop.jsx";
 import Cart from "./routes/cart.jsx";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import ErrorPage from "./error-page.jsx";
 import { dummyCards } from "./lib/dummyCards.js";
-import {
-  fetchProducts,
-  countCartItems,
-  cartSubtotal,
-  formatPrice,
-} from "./lib/utils.js";
+import { fetchProducts } from "./lib/utils.js";
 
 export default function Router() {
-  const [products, setProducts] = useState(dummyCards);
+  const [products, setProducts] = useState([]);
   const [cart, setCart] = useState(new Map());
 
   useEffect(() => {
-    // TODO - update `products` with fetched data from API
-  });
+    fetchProducts()
+      .then((data) => {
+        data.length > 0 ? setProducts(data) : setProducts(dummyCards);
+      })
+      .catch((error) => {
+        console.error(error);
+        setProducts(dummyCards);
+      });
+  }, []);
 
   const incrementCartItemCount = function (productId) {
     setCart((prevCart) => {
@@ -74,7 +74,7 @@ export default function Router() {
 
   const cartItems = function (products, cart) {
     const res = [];
-    cart.forEach((value, key, map) => {
+    cart.forEach((value, key) => {
       const item = products.find((prod) => prod.id === key);
       if (item) res.push({ ...item, quantity: value });
     });

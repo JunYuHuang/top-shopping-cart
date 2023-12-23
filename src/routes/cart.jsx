@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { cartSubtotal, formatPrice } from "./../lib/utils.js";
 import CartItem from "../components/CartItem.jsx";
 
@@ -61,7 +61,15 @@ export default function Cart({
             </div>
           </>
         ) : (
-          <p className="">Your cart is empty.</p>
+          <>
+            <p className="mb-3">Your cart is empty.</p>
+            <Link
+              className="block border-black border-2 rounded-lg p-2 max-w-fit"
+              to={`/`}
+            >
+              Continue Shopping
+            </Link>
+          </>
         )}
       </div>
     </div>

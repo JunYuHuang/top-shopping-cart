@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { formatPrice } from "./../lib/utils.js";
@@ -38,7 +37,7 @@ export default function CartItem({
         <div className="text-xl text-ellipsis">
           {title} (x {quantity})
         </div>
-        <div className="text-xl text-ellipsis text-gray-700 mb-2">
+        <div className="text-xl text-ellipsis text-gray-700">
           {formatPrice(price)}
         </div>
       </div>
