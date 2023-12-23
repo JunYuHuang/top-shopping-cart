@@ -37,9 +37,25 @@ export default function Router() {
       const prevCartItemCount = prevCart.has(productId)
         ? prevCart.get(productId)
         : 0;
-      if (prevCartItemCount <= 1) return prevCart;
+      if (prevCartItemCount <= 0) return prevCart;
       const newCart = new Map(prevCart);
+      if (prevCartItemCount - 1 === 0) {
+        newCart.delete(productId);
+        return newCart;
+      }
       return newCart.set(productId, prevCartItemCount - 1);
+    });
+  };
+
+  const setCartItemCount = function (productId, count) {
+    if (!Number.isInteger(count) || count < 0) return;
+    setCart((prevCart) => {
+      const newCart = new Map(prevCart);
+      if (count === 0) {
+        newCart.delete(productId);
+        return newCart;
+      }
+      return newCart.set(productId, count);
     });
   };
 
@@ -47,7 +63,7 @@ export default function Router() {
     setCart((prevCart) => {
       if (!prevCart.has(productId)) return prevCart;
       const newCart = new Map(prevCart);
-      newCart.delete(productId, 0);
+      newCart.delete(productId);
       return newCart;
     });
   };
@@ -72,6 +88,7 @@ export default function Router() {
     cart,
     incrementCartItemCount,
     decrementCartItemCount,
+    setCartItemCount,
     removeCartItem,
     clearCart,
     cartItems,
