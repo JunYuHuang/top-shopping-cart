@@ -11,4 +11,9 @@ export default defineConfig({
     },
   },
   base: "/top-shopping-cart/",
+  test: {
+    globals: true,
+    environment: "jsdom",
+    setupFiles: "./src/specs/setup.js",
+  },
 });

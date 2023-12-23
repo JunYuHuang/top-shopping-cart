@@ -15,6 +15,7 @@ export default function Shop({ products, incrementCartItemCount }) {
     <>
       <h2 className="text-3xl mb-3">All Products</h2>
       <div
+        data-testid="products-container"
         className="grid gap-5 grid-cols-[repeat(auto-fill,_minmax(200px,_1fr))]"
         onClick={handleAddToCart}
       >
